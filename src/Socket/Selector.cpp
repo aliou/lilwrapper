@@ -10,7 +10,11 @@ namespace LilWrapper
 
   void Selector::initSet()
   {
-    std::for_each(_sockets.begin(), _sockets.end(), &Selector::addToSet);
+    std::list<ISocket *>::iterator it = _sockets.begin();
+
+    clearSet();
+    for (; it != _sockets.end(); ++it)
+      FD_SET((*it)->getFD(), &_readfds);
   }
 
   void Selector::addToSet(ISocket *sock)

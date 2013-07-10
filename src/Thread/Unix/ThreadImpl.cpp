@@ -12,6 +12,12 @@ namespace LilWrapper
 	  "Error while creating the thread");
   }
 
+  ThreadImpl::~ThreadImpl()
+  {
+    if (this->_isActive)
+      terminate();
+  }
+
   void ThreadImpl::wait()
   {
     if (this->_isActive)

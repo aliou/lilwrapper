@@ -1,17 +1,19 @@
-#include "IMutex.hh"
+#include "Thread/IMutex.hh"
 
 #ifndef SCOPEDLOCK_HH_
 # define SCOPEDLOCK_HH_
 
-class ScopedLock
+namespace LilWrapper
 {
-  private:
-    ThreadWrapper::IMutex	*_mutex;
+  class ScopedLock
+  {
+    private:
+      IMutex	*_mutex;
 
-    ScopedLock(const ScopedLock &);
-    ScopedLock &operator=(const ScopedLock &);
-  public:
-    ScopedLock(ThreadWrapper::IMutex *mutex);
+    public:
+      ScopedLock(IMutex *);
+      ~ScopedLock();
+  };
 }
 
 #endif /* SCOPEDLOCK_HH_ */

@@ -11,7 +11,7 @@ namespace LilWrapper
       virtual void lock() = 0;
       virtual void unlock() = 0;
       virtual bool trylock() = 0;
-  }
+  };
 }
 
 #endif /* IMUTEX_HH_ */

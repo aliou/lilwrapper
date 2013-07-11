@@ -9,7 +9,7 @@ namespace LilWrapper
 	&ThreadImpl::entryPoint, thread) == 0;
     if (!this->_isActive)
       throw ThreadException("Thread Exception: "
-	  "Error while creating the thread");
+	  "Error while creating the Thread.");
   }
 
   ThreadImpl::~ThreadImpl()

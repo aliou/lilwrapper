@@ -1,5 +1,5 @@
 #include <pthread.h>
-#include "Thread/Thread.hh"
+#include "Thread/Thread.hpp"
 
 #ifndef THREADIMPL_HH_
 # define THREADIMPL_HH_

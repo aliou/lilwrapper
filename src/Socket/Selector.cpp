@@ -14,17 +14,17 @@ namespace LilWrapper
 
     clearSet();
     for (; it != _sockets.end(); ++it)
-      FD_SET((*it)->getFD(), &_readfds);
+      FD_SET((*it)->getNativeSocket(), &_readfds);
   }
 
   void Selector::addToSet(ISocket *sock)
   {
-    FD_SET(sock->getFD(), &_readfds);
+    FD_SET(sock->getNativeSocket(), &_readfds);
   }
 
   void Selector::removeFromSet(ISocket *sock)
   {
-    FD_CLR(sock->getFD(), &_readfds);
+    FD_CLR(sock->getNativeSocket(), &_readfds);
   }
 
   void Selector::clearSet()
@@ -35,10 +35,10 @@ namespace LilWrapper
   int Selector::getMaxFD() const
   {
     std::list<ISocket *>::const_iterator it = _sockets.begin();
-    int maxfd = (*it)->getFD();
+    int maxfd = (*it)->getNativeSocket();
 
     for (; it != _sockets.end(); ++it)
-      maxfd = (*it)->getFD() > maxfd ? (*it)->getFD() : maxfd;
+      maxfd = (*it)->getNativeSocket() > maxfd ? (*it)->getNativeSocket() : maxfd;
 
     return (maxfd);
   }
@@ -70,7 +70,7 @@ namespace LilWrapper
 
   bool Selector::hasChanged(ISocket *sock) const
   {
-    return (FD_ISSET(sock->getFD(), &_readfds) == 1);
+    return (FD_ISSET(sock->getNativeSocket(), &_readfds) == 1);
   }
 
 }

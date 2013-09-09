@@ -1,3 +1,5 @@
+#include "Socket/SocketType.hh"
+
 #ifndef ISOCKET_HH_
 # define ISOCKET_HH_
 
@@ -7,6 +9,8 @@ namespace LilWrapper
   {
     public:
       virtual ~ISocket() {}
+
+      virtual t_socket getNativeSocket() const;
   };
 }
 

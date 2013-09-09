@@ -20,6 +20,8 @@ namespace LilWrapper
       ThreadImpl	*_impl;
       ThreadStarter	*_starter;
     public:
+      Thread() : _impl(0), _starter(0) {}
+
       template <typename F>
         Thread(F);
 

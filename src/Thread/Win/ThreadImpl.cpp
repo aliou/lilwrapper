@@ -6,10 +6,10 @@ namespace LilWrapper
   ThreadImpl::ThreadImpl(Thread *owner)
   {
     this->_handle = reinterpret_cast<HANDLE>(_beginthreadex(NULL, 0,
-	  &ThreadImpl::entryPoint, owner, 0, &this->_id));
+          &ThreadImpl::entryPoint, owner, 0, &this->_id));
     if (this->_handle == (HANDLE) -1L || this->_handle == (HANDLE) -1)
       throw ThreadException("Thread Exception: "
-	  "Error while creating the Thread.");
+          "Error while creating the Thread.");
   }
 
   ThreadImpl::~ThreadImpl()
@@ -23,8 +23,8 @@ namespace LilWrapper
     if (this->_handle)
     {
       if (this->_id == GetCurrentThreadId())
-	throw ThreadException("Thread Exception: "
-	    "A thread cannot wait for itself.");
+        throw ThreadException("Thread Exception: "
+            "A thread cannot wait for itself.");
       WaitForSingleObject(this->_handle, INFINITE);
     }
   }

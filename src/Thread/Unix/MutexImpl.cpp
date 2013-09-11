@@ -7,7 +7,7 @@ namespace LilWrapper
   {
     if (pthread_mutex_init(&this->_mutex, NULL) != 0)
       throw ThreadException("Mutex Exception: "
-	  "Error while creating the Mutex.");
+          "Error while creating the Mutex.");
   }
 
   MutexImpl::~MutexImpl()

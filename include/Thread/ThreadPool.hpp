@@ -20,7 +20,7 @@ namespace LilWrapper
   {
     private:
       std::queue<ThreadStarter *>		_tasks;
-      std::list<std::pair<IThread *, Status> >	_thread;
+      std::list<std::pair<IThread *, Status> >	_workers;
 
       static void removeTask(std::pair<IThread *, Status>);
     public:
@@ -57,7 +57,6 @@ namespace LilWrapper
       ThreadStarter *starter = new ThreadMemberFunction<O>(func, object);
       this->_tasks.push(starter);
     }
-
 }
 
 #endif /* !THREADPOOL_HH_ */

@@ -9,6 +9,7 @@ SRCTHREAD	= src/Thread/Mutex.cpp				\
 		  src/Thread/ScopedLock.cpp			\
 		  src/Thread/Thread.cpp				\
 		  src/Thread/ThreadException.cpp	\
+		  src/Thread/ThreadPool.cpp			\
 		  src/Thread/Unix/ThreadImpl.cpp	\
 		  src/Thread/Unix/MutexImpl.cpp		\
 

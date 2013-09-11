@@ -14,7 +14,6 @@ namespace LilWrapper
     ThreadStatusError = -1,
     ThreadStatusUnused,
     ThreadStatusUsed,
-    ThreadStatusNumber
   } Status;
 
   class ThreadPool

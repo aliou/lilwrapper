@@ -1,4 +1,4 @@
-#include "Thread/ThreadPool.hh"
+#include "Thread/ThreadPool.hpp"
 
 namespace LilWrapper
 {
@@ -15,27 +15,6 @@ namespace LilWrapper
         ThreadPool::removeTask);
     this->_thread.clear();
   }
-
-  template <typename F>
-    void ThreadPool::schedule(F function)
-    {
-      ThreadStarter *starter = new ThreadFunctor<F>(function);
-      this->_tasks.push(starter);
-    }
-
-  template <typename F, typename A>
-    void ThreadPool::schedule(F func, A arg)
-    {
-      ThreadStarter *starter = new ThreadFunctorWithArg<F, A>(func, arg);
-      this->_tasks.push(starter);
-    }
-
-  template <typename O>
-    void ThreadPool::schedule(void (O::*func)(), O *object)
-    {
-      ThreadStarter *starter = new ThreadMemberFunction<O>(func, object);
-      this->_tasks.push(starter);
-    }
 
   void ThreadPool::removeTask(std::pair<IThread *, Status> pair)
   {

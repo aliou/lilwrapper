@@ -45,10 +45,10 @@ set (TEST_THREAD_NAME "test_thread")
 set (TEST_MUTEX_NAME "test_mutex")
 set (TEST_DIR "${PROJECT_SOURCE_DIR}/test")
 
-set (SRC_THREAD_FILES "${TEST_DIR}/thread.cpp")
-set (SRC_MUTEX_FILES "${TEST_DIR}/mutex.cpp")
+set (SRC_THREAD_FILES "${TEST_DIR}/thread.cpp" "${TEST_DIR}/mockclass.cpp")
+set (SRC_MUTEX_FILES "${TEST_DIR}/mutex.cpp" "${TEST_DIR}/mockclass.cpp")
 
-set (INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
+set (INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include" "${TEST_DIR}")
 
 add_executable (${TEST_THREAD_NAME} ${SRC_THREAD_FILES})
 add_executable (${TEST_MUTEX_NAME} ${SRC_MUTEX_FILES})

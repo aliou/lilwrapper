@@ -30,12 +30,16 @@ set (INCLUDE_DIRS "${PROJECT_SOURCE_DIR}/include")
 include_directories (${INCLUDE_DIRS})
 
 if (NOT DYNAMIC OR STATIC)
-  # static library `cmake .. -DSTATIC=1` or `cmake ..` (e.g.: libnetsoul.a)
   add_library (${LIBLILWRAPPER_NAME} STATIC ${SOURCE_FILES})
 else ()
-  # dynamic library `cmake .. -DDYNAMIC=1` (e.g.: libnetsoul.so)
   add_library (${LIBLILWRAPPER_NAME} SHARED ${SOURCE_FILES})
 endif()
+
+if (WIN32)
+  # target_link_libraries (${LIBLILWRAPPER_NAME} ws2_32)
+else (WIN32)
+  target_link_libraries (${LIBLILWRAPPER_NAME} pthread)
+endif (WIN32)
 
 ###############################################################################
 

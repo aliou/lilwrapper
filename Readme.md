@@ -5,7 +5,8 @@ a work in progress.__
 
 ## Build
 
-To build, run
+You can use just it as a part of your code or as a library.
+To build the library, run:
 ```
 cmake
 make

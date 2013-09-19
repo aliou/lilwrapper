@@ -7,8 +7,8 @@
 int without_mutex()
 {
   Mock m;
-  LilWrapper::IThread *t1 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
-  LilWrapper::IThread *t2 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
+  LilWrapper::Thread *t1 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
+  LilWrapper::Thread *t2 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
 
   t1->launch();
   t2->launch();
@@ -21,8 +21,8 @@ int without_mutex()
 int with_mutex()
 {
   Mock m;
-  LilWrapper::IThread *t1 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
-  LilWrapper::IThread *t2 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
+  LilWrapper::Thread *t1 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
+  LilWrapper::Thread *t2 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
 
   t1->launch();
   t2->launch();

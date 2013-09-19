@@ -2,7 +2,7 @@
 
 namespace LilWrapper
 {
-  ScopedLock::ScopedLock(IMutex *mutex)
+  ScopedLock::ScopedLock(Mutex *mutex)
     : _mutex(mutex)
   {
     this->_mutex->lock();

@@ -8,7 +8,7 @@ class Mock
 {
   private:
     int _data;
-    LilWrapper::IMutex *_m;
+    LilWrapper::Mutex *_m;
   public:
     Mock();
     ~Mock() {}

@@ -1,0 +1,64 @@
+body {
+  font-family: Lato, Verdana, Arial, sans-serif;
+  border-top-color: rgb(86, 187, 115);
+  border-top-style: solid;
+  border-top-width: 3px;
+}
+
+a {
+  color: rgb(86, 187, 115);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+mark {
+  background-color: white;
+  font-weight: bold;
+}
+
+h1, h2 {
+  margin-bottom: 14px;
+  margin-top: 14px;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+p, pre {
+  margin: 0 0 10px;
+}
+
+code, pre {
+  font-family: Monaco, Lucida Console, Terminal;
+  color: #333;
+  font-size: 12px;
+}
+
+pre {
+  background: #f8f8f8;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+}
+
+#nav,
+#footer {
+  float: right;
+  margin-top: 14px;
+}
+
+#nav a {
+  margin-left: 8px;
+}
+
+#content {
+  width: 480px;
+  margin: 60px auto;
+}

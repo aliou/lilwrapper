@@ -22,8 +22,8 @@ int main()
   LilWrapper::Thread t1(&long_computation);
   LilWrapper::Thread t2(&long_computation);
 
-  t1.run();
-  t2.run();
+  t1.launch();
+  t2.launch();
   return (0);
 }
 ```
@@ -45,8 +45,8 @@ int main()
   LilWrapper::Thread t1(&long_computation, 5);
   LilWrapper::Thread t2(&long_computation, 3);
 
-  t1.run();
-  t2.run();
+  t1.launch();
+  t2.launch();
   return (0);
 }
 ```
@@ -71,8 +71,8 @@ int main()
   LilWrapper::Thread t1(&Sleeper::long_computation, &s);
   LilWrapper::Thread t2(&Sleeper::long_computation, &s);
 
-  t1.run();
-  t2.run();
+  t1.launch();
+  t2.launch();
   return (0);
 }
 ```

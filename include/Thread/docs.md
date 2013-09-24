@@ -1,4 +1,16 @@
-So far, there are four classes abstracted from the C Thread Library.
+So far, there are four classes abstracted from or created using the C Thread
+Library.
+
+## Table of Contents
+
+* [Threads](#thread)
+  * [Instantiation](#instantiation)
+  * [Using the Threads](#using-the-threads)
+  * [Notes](#notes)
+* [Mutex](#mutex)
+* [Scoped Lock](#scoped-lock)
+* [Thread Exception](#thread-exception)
+* [Thread Pool](#thread-pool)
 
 ## Thread
 
@@ -6,7 +18,7 @@ So far, there are four classes abstracted from the C Thread Library.
 
 The Thread class can be instantiated from three constructors:
 
-* `[Thread(F function)][1]`:
+* [`Thread(F function)`][1]:
 
 This constructor takes as a parameter the function to execute in the new
 thread. It can be used like this:
@@ -28,7 +40,7 @@ int main()
 }
 ```
 
-* `[Thread(F function, A Argument)][2]`:
+* [`Thread(F function, A Argument)`][2]:
 
 This constructor, like the previous one, takes the function to execute in the
 new thread, and also a argument to pass to this function. It can be used like
@@ -51,7 +63,7 @@ int main()
 }
 ```
 
-* `[Thread(void (C::*)(), C *)][3]`:
+* [`Thread(void (C::*)(), C *)`][3]:
 
 This constructor takes a pointer to a member function from a class C and a
 pointer to object from the class C. A call to the member function from the
@@ -59,10 +71,11 @@ object will be executed in the new thread. It can be used like this:
 
 ```cpp
 class Sleeper {
-  void long_computation()
-  {
-    sleep(5);
-  }
+  public:
+    void long_computation()
+    {
+      sleep(5);
+    }
 };
 
 int main()
@@ -76,6 +89,35 @@ int main()
   return (0);
 }
 ```
+
+### Using the Threads.
+
+Your thread object can now be used with the following methods:
+
+* `void Thread::launch()`:
+
+The `launch` method actually creates the thread and runs the associated functor in
+the thread.
+
+* `void Thread::wait()`:
+
+The `wait` method waits for the thread to terminate. If it as already terminated,
+then it return immediately.
+
+* `void Thread::terminate()`:
+
+The `terminate` method immediately terminates the thread.
+
+### Notes
+
+The `Thread::run()` method is used by the `ThreadImpl` class, the class that calls
+the function from the C library depending on the operating system. It is not for
+public use.
+
+<!---
+The `Thread::run()` should probably be private and the `ThreadImpl` class should
+be a friend class of `Thread`.
+-->
 
 [1]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/include/Thread/Thread.hpp#L77
 [2]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/include/Thread/Thread.hpp#L85

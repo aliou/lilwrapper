@@ -1,19 +1,3 @@
-So far, there are four classes abstracted from or created using the C Thread
-Library.
-
-## Table of Contents
-
-* [Threads](#thread)
-  * [Instantiating Threads](#instantiating-Threads)
-  * [Using the Threads](#using-the-threads)
-  * [Notes](#notes)
-* [Mutex](#mutex)
-  * [Instantiating Mutexes](#instantiating-mutexes)
-  * [Using the Mutexes](#using-the-mutexes)
-* [Scoped Lock](#scoped-lock)
-* [Thread Exception](#thread-exception)
-* [Thread Pool](#thread-pool)
-
 ## Thread
 
 ### Instantiating Threads
@@ -121,32 +105,7 @@ The `Thread::run()` should probably be private and the `ThreadImpl` class should
 be a friend class of `Thread`.
 -->
 
-## Mutex
-
-### Instantiating Mutexes
-
-The Mutex class can be instantiated with its simple constructor: [`Mutex()`][4].
-The constructor initialize the mutex native handle.
-
-### Using the Mutexes
-
-Your Mutex object can now be used with the following methods:
-
-* `void Mutex::lock()`:
-
-The `lock` method locks the mutex. If the mutex is already locked, the calling
-thread is blocked until the mutex is unlocked.
-
-* `void Mutex::unlock()`:
-
-The `unlock()` method releases the mutex.
-
-* `bool Mutex::trylock()`:
-
-The `trylock()` method is equivalent to the `lock` method except that if the
-mutex is already locked, the method returns the `false`.
 
 [1]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/include/Thread/Thread.hpp#L77
 [2]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/include/Thread/Thread.hpp#L85
 [3]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/include/Thread/Thread.hpp#L94
-[4]: https://github.com/aliou/lilwrapper/blob/da84c6b8aff82e19a14b3349fe9bd473ad1e060d/src/Thread/Mutex.cpp#L11

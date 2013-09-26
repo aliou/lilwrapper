@@ -1,38 +1,46 @@
-#include <iostream>
 #include <assert.h>
-#include "mockclass.hh"
+#include <time.h>
+#include <stdlib.h>
+#include <vector>
 #include "Thread/Mutex.hh"
 #include "Thread/Thread.hpp"
 
-int without_mutex()
+int increment_value;
+
+struct mock
 {
-  Mock m;
-  LilWrapper::Thread *t1 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
-  LilWrapper::Thread *t2 = new LilWrapper::Thread(&Mock::increment_without_mutex, &m);
+  int _data;
+  LilWrapper::Mutex _access;
+};
 
-  t1->launch();
-  t2->launch();
-
-  delete t1;
-  delete t2;
-  return (m.getData());
-}
-
-int with_mutex()
+void increment(struct mock *m)
 {
-  Mock m;
-  LilWrapper::Thread *t1 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
-  LilWrapper::Thread *t2 = new LilWrapper::Thread(&Mock::increment_with_mutex, &m);
-
-  t1->launch();
-  t2->launch();
-
-  delete t1;
-  delete t2;
-  return (m.getData());
+  m->_access.lock();
+  for (int i = 0; i < increment_value; i++)
+    m->_data++;
+  m->_access.unlock();
 }
 
 int main()
 {
+  mock m;
+
+  srand(time(NULL));
+
+  int nb = random() % 30 + 1;
+  increment_value = random() % 15 + 1;
+  std::vector<LilWrapper::Thread *> threads(nb);
+
+  m._data = 0;
+  for (int i = 0; i < nb; i++)
+    threads[i] = new LilWrapper::Thread(&increment, &m);
+
+  for (int i = 0; i < nb; i++)
+    threads[i]->launch();
+
+  for (int i = 0; i < nb; i++)
+    threads[i]->wait();
+
+  assert(m._data == nb * increment_value);
   return (0);
 }

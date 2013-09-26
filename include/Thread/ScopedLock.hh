@@ -11,7 +11,7 @@ namespace LilWrapper
       Mutex	*_mutex;
 
       ScopedLock(const ScopedLock&);
-      const ScopedLock& operator=(const NonCopyable&);
+      const ScopedLock& operator=(const ScopedLock&);
     public:
       ScopedLock(Mutex *);
       ~ScopedLock();

@@ -1,3 +1,4 @@
+#include <iostream>
 #include <assert.h>
 #include <time.h>
 #include <stdlib.h>
@@ -13,7 +14,7 @@ struct mock
   LilWrapper::Mutex _access;
 };
 
-void increment(struct mock *m)
+void increment(mock *m)
 {
   m->_access.lock();
   for (int i = 0; i < increment_value; i++)
@@ -27,20 +28,23 @@ int main()
 
   srand(time(NULL));
 
-  int nb = random() % 30 + 1;
-  increment_value = random() % 15 + 1;
-  std::vector<LilWrapper::Thread *> threads(nb);
+  int thread_count = random() % 100 + 1;
+  increment_value = random() % 1000 + 1;
+  std::vector<LilWrapper::Thread *> threads(thread_count);
+
+  std::cout << "Increment value   ==> " << increment_value << std::endl;
+  std::cout << "Number of Threads ==> " << thread_count << std::endl;
 
   m._data = 0;
-  for (int i = 0; i < nb; i++)
+  for (int i = 0; i < thread_count; i++)
     threads[i] = new LilWrapper::Thread(&increment, &m);
 
-  for (int i = 0; i < nb; i++)
+  for (int i = 0; i < thread_count; i++)
     threads[i]->launch();
 
-  for (int i = 0; i < nb; i++)
+  for (int i = 0; i < thread_count; i++)
     threads[i]->wait();
 
-  assert(m._data == nb * increment_value);
+  assert(m._data == thread_count * increment_value);
   return (0);
 }

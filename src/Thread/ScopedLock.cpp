@@ -5,11 +5,13 @@ namespace LilWrapper
   ScopedLock::ScopedLock(Mutex *mutex)
     : _mutex(mutex)
   {
-    this->_mutex->lock();
+    if (this->_mutex)
+      this->_mutex->lock();
   }
 
   ScopedLock::~ScopedLock()
   {
-    this->_mutex->unlock();
+    if (this->_mutex)
+      this->_mutex->unlock();
   }
 }

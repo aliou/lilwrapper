@@ -1,5 +1,8 @@
 ## Thread
 
+The class `Thread` represents a single thread of execution. Threads allow multiple
+pieces of code to run asynchronously and simultaneously.
+
 ### Instantiating Threads
 
 The Thread class can be instantiated from three constructors:
@@ -98,7 +101,7 @@ The `terminate` method immediately terminates the thread.
 
 The `Thread::run()` method is used by the `ThreadImpl` class, the class that calls
 the function from the C library depending on the operating system. It is not for
-public use.
+public use and will probably become private soon.
 
 <!---
 The `Thread::run()` should probably be private and the `ThreadImpl` class should

@@ -15,4 +15,3 @@ Library.
   * [Notes](Scoped_Lock.md#notes)
 * [Thread Exception](Thread_Exception.md#thread-exception)
 * [Thread Pool](Thread_Pool.md#thread-pool)
-

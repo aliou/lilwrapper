@@ -1,5 +1,9 @@
 ## Scoped Lock
 
+The class `ScopedLock` is a mutex wrapper that provides a convenient "Resource
+Acquisition Is Initialization" -style mechanism for owning a mutex for the
+duration of a scoped block.
+
 ### Using Scoped Locks
 
 The Scoped lock class is a wrapper around a Mutex that provides a way to own a
@@ -11,7 +15,7 @@ is destroyed and the mutex is released.
 
 It can be used like this:
 
-  ```c
+ ```c
 int g_i;
 LilWrapper::Mutex g_i_mutex;
 

@@ -1,5 +1,8 @@
 ## Mutex
 
+The `Mutex` class is a synchronization primitive that can be used to protect
+shared data from being simultaneously accessed by multiple threads.
+
 ### Instantiating Mutexes
 
 The Mutex class can be instantiated with its simple constructor: [`Mutex()`][1].

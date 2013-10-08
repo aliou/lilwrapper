@@ -1,5 +1,3 @@
-#include "Thread/IThread.hh"
-
 #ifndef THREAD_HH_
 # define THREAD_HH_
 
@@ -14,7 +12,7 @@ namespace LilWrapper
       virtual void run() = 0;
   };
 
-  class Thread : public IThread
+  class Thread
   {
     private:
       ThreadImpl	*_impl;

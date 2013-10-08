@@ -1,5 +1,3 @@
-#include "Thread/IMutex.hh"
-
 #ifndef MUTEX_HH_
 # define MUTEX_HH_
 
@@ -7,7 +5,7 @@ namespace LilWrapper
 {
   class MutexImpl;
 
-  class Mutex : public IMutex
+  class Mutex
   {
     private:
       MutexImpl	*_impl;

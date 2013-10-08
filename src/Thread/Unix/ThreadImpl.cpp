@@ -6,10 +6,10 @@ namespace LilWrapper
   ThreadImpl::ThreadImpl(Thread *thread)
   {
     this->_isActive = pthread_create(&this->_thread, NULL,
-	&ThreadImpl::entryPoint, thread) == 0;
+        &ThreadImpl::entryPoint, thread) == 0;
     if (!this->_isActive)
       throw ThreadException("Thread Exception: "
-	  "Error while creating the Thread.");
+          "Error while creating the Thread.");
   }
 
   ThreadImpl::~ThreadImpl()
@@ -23,8 +23,8 @@ namespace LilWrapper
     if (this->_isActive)
     {
       if (pthread_equal(pthread_self(), this->_thread) != 0)
-	throw ThreadException("Thread Exception: "
-	    "A thread cannot wait for itself.");
+        throw ThreadException("Thread Exception: "
+            "A thread cannot wait for itself.");
       pthread_join(this->_thread, NULL);
     }
   }
@@ -33,6 +33,7 @@ namespace LilWrapper
   {
     if (this->_isActive)
       pthread_cancel(this->_thread);
+    this->_isActive = false;
   }
 
   void *ThreadImpl::entryPoint(void *data)

@@ -5,7 +5,7 @@ a work in progress.__
 
 ## Build
 
-You can use just it as a part of your code or as a library.
+You can use it as a part of your code or as a library.
 To build the library, run:
 ```
 cmake
@@ -15,6 +15,10 @@ make test
 
 To build as a static library, run CMake with the `-DSTATIC=1` option. To build
 as a dynamic library, use the `-DDYNAMIC=1` option.
+
+## Docs
+
+The documentation is available [here](docs/Readme.md).
 
 ## License
 

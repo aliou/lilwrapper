@@ -1,7 +1,7 @@
+#include <cassert>
+#include <cstdlib>
+#include <ctime>
 #include <iostream>
-#include <assert.h>
-#include <time.h>
-#include <stdlib.h>
 #include <vector>
 #include "Thread/Mutex.hh"
 #include "Thread/Thread.hpp"
@@ -26,10 +26,10 @@ int main()
 {
   mock m;
 
-  srand(time(NULL));
+  std::srand((unsigned int) std::time(0));
 
-  int thread_count = random() % 100 + 1;
-  increment_value = random() % 1000 + 1;
+  int thread_count = std::rand() % 100 + 1;
+  increment_value = std::rand() % 1000 + 1;
   std::vector<LilWrapper::Thread *> threads(thread_count);
 
   std::cout << "Increment value   ==> " << increment_value << std::endl;

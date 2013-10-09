@@ -12,17 +12,23 @@ namespace LilWrapper
 
   MutexImpl::~MutexImpl()
   {
-    pthread_mutex_destroy(&this->_mutex);
+    if (pthread_mutex_destroy(&this->_mutex) != 0)
+      throw ThreadException("Mutex Exception: "
+          "Error while destroying the Mutex.");
   }
 
   void MutexImpl::lock()
   {
-    pthread_mutex_lock(&this->_mutex);
+    if (pthread_mutex_lock(&this->_mutex) != 0)
+      throw ThreadException("Mutex Exception: "
+          "Error while locking the Mutex.");
   }
 
   void MutexImpl::unlock()
   {
-    pthread_mutex_unlock(&this->_mutex);
+    if (pthread_mutex_unlock(&this->_mutex) != 0)
+      throw ThreadException("Mutex Exception: "
+          "Error while unlocking the Mutex.");
   }
 
   bool MutexImpl::trylock()

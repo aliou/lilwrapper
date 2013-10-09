@@ -25,14 +25,18 @@ namespace LilWrapper
       if (pthread_equal(pthread_self(), this->_thread) != 0)
         throw ThreadException("Thread Exception: "
             "A thread cannot wait for itself.");
-      pthread_join(this->_thread, NULL);
+      if (pthread_join(this->_thread, NULL) != 0)
+        throw ThreadException("Thread Exception: "
+            "Error while waiting for the thread to finish.");
     }
   }
 
   void ThreadImpl::terminate()
   {
     if (this->_isActive)
-      pthread_cancel(this->_thread);
+      if (pthread_cancel(this->_thread) != 0)
+        throw ThreadException("Thread Exception: "
+            "Error while canceling the thread.");
     this->_isActive = false;
   }
 

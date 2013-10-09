@@ -25,6 +25,6 @@ namespace LilWrapper
 
   bool MutexImpl::trylock()
   {
-
+    return (TryEnterCriticalSection(&this->_mutex) != 0);
   }
 }

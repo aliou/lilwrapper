@@ -29,6 +29,7 @@ namespace LilWrapper
         throw ThreadException("Thread Exception: "
             "Error while waiting for the thread to finish.");
     }
+    this->_isActive = false;
   }
 
   void ThreadImpl::terminate()

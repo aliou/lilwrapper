@@ -14,9 +14,12 @@ namespace LilWrapper
 
   class Thread
   {
+    friend class ThreadImpl;
     private:
       ThreadImpl	*_impl;
       ThreadStarter	*_starter;
+
+      void run();
     public:
       template <typename F>
         Thread(F);
@@ -32,7 +35,6 @@ namespace LilWrapper
       void launch();
       void wait();
       void terminate();
-      void run();
   };
 
   template <typename F>

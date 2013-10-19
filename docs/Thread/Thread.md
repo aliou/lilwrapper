@@ -97,13 +97,13 @@ then it return immediately.
 
 The `terminate` method immediately terminates the thread.
 
+<!---
 ### Notes
 
 The `Thread::run()` method is used by the `ThreadImpl` class, the class that calls
 the function from the C library depending on the operating system. It is not for
 public use and will probably become private soon.
 
-<!---
 The `Thread::run()` should probably be private and the `ThreadImpl` class should
 be a friend class of `Thread`.
 -->

@@ -1,7 +1,7 @@
 # LilWrapper
 
-LilWrapper is a cross-platform C++ library wrapper around the C Socket and Thread APIs. __This is
-a work in progress.__
+LilWrapper is a cross-platform C++ library wrapper around the C Socket and
+Thread APIs. __This is a work in progress.__
 
 [![Build Status](https://travis-ci.org/aliou/lilwrapper.png)](https://travis-ci.org/aliou/lilwrapper)
 

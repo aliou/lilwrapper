@@ -1,4 +1,4 @@
-So far, there are four classes abstracted from or created using the C Thread
+So far, there are five classes abstracted from or created using the C Thread
 Library.
 
 ## Table of Contents

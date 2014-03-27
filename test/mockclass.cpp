@@ -23,4 +23,4 @@ void Mock::increment_with_mutex()
 int Mock::getData() const
 {
   return (this->_data);
-};
+}

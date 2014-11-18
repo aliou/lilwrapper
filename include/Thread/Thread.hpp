@@ -21,6 +21,8 @@ namespace LilWrapper
 
       void run();
     public:
+      Thread() : _impl(0), _starter(0) {}
+
       template <typename F>
         Thread(F);
 
